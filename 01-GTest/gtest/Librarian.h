@@ -12,10 +12,18 @@ public:
 	}
 
 	unsigned int borrow(const std::string &name) {
-		throw std::runtime_error("not implemented");
+		BookSet::const_iterator it = books_.find(name);
+		if (it == books_.end()) {
+			throw std::runtime_error(name + " is not available");
+		}
+		else {
+			books_.erase(it);
+			return books_.size();
+		}
 	}
 private:
-	std::set<std::string> books_;
+	typedef std::set<std::string> BookSet;
+	BookSet books_;
 };
 
 
