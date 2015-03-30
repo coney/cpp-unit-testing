@@ -52,7 +52,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -78,12 +78,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="gtest\gtest.h" />
-    <ClInclude Include="gtest\Librarian.h" />
+    <ClInclude Include="Librarian.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gtest\gtest-all.cc" />
     <ClCompile Include="gtest\gtest_main.cc" />
-    <ClCompile Include="gtest\LibrarianSpec.cpp" />
+    <ClCompile Include="LibrarianSpec.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
