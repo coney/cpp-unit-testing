@@ -18,7 +18,7 @@
     <ClInclude Include="gtest\gtest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Book.h">
+    <ClInclude Include="gtest\Librarian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClCompile Include="gtest\gtest-all.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BookSpec.cpp">
+    <ClCompile Include="gtest\LibrarianSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

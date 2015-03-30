@@ -77,13 +77,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Book.h" />
     <ClInclude Include="gtest\gtest.h" />
+    <ClInclude Include="gtest\Librarian.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BookSpec.cpp" />
     <ClCompile Include="gtest\gtest-all.cc" />
     <ClCompile Include="gtest\gtest_main.cc" />
+    <ClCompile Include="gtest\LibrarianSpec.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
