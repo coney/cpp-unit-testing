@@ -2,7 +2,7 @@ Introduction To Google Test
 ===========
 ## Preparation
 * 安装Visual Studio 2012以上版本(最好配套安装Visual Assist)
-* 安装git客户端, 安装教程请参考(git安装说明)[git-tutorial](https://www.gitbook.com/book/lvwzhen/git-tutorial/)
+* 安装git客户端, Git教程请参考 [Git Tutorial](https://www.gitbook.com/book/lvwzhen/git-tutorial/)
 * fork此repo至个人账号下, 并通过git客户端clone代码到本地
 * 打开`01-GTest.sln`, 确保现有代码能够正确地被编译和执行(请忽略失败的测试用例)
 
@@ -34,6 +34,12 @@ public:
 * 通过继承`testing::Test`, 创建Fixture `LibrarianSpec`
 * 将准备数据的`Librarian::store`代码放入`LibrarianSpec::SetUp`中
 * 通过`TEST_F`重构所有测试用例
+
+## Reference
+* [Google Test Primer](https://code.google.com/p/googletest/wiki/Primer)
+* [Google Test Advanced Guide](https://code.google.com/p/googletest/wiki/AdvancedGuide)
+* [Google Test FAQ](https://code.google.com/p/googletest/wiki/FAQ)
+
 
 ## Summary
 * Google Test
