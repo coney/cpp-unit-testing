@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="gtest\gtest-all.cc" />
     <ClCompile Include="gtest\gtest_main.cc" />
+    <ClCompile Include="Librarian.cpp" />
     <ClCompile Include="LibrarianSpec.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

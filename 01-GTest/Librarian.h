@@ -6,14 +6,9 @@
 
 class Librarian {
 public:
-	unsigned int store(const std::string &name) {
-		books_.insert(name);
-		return books_.size();
-	}
+	unsigned int store(const std::string &name);
+	unsigned int borrow(const std::string &name);
 
-	unsigned int borrow(const std::string &name) {
-		throw std::runtime_error("not implemented");
-	}
 private:
 	std::set<std::string> books_;
 };

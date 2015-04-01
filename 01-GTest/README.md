@@ -2,7 +2,7 @@ Introduction To Google Test
 ===========
 ## Preparation
 * 安装Visual Studio 2012以上版本(最好配套安装Visual Assist)
-* 安装git客户端, 安装教程请参考(git安装说明)[interal address]
+* 安装git客户端, 安装教程请参考(git安装说明)[git-tutorial](https://www.gitbook.com/book/lvwzhen/git-tutorial/)
 * fork此repo至个人账号下, 并通过git客户端clone代码到本地
 * 打开`01-GTest.sln`, 确保现有代码能够正确地被编译和执行(请忽略失败的测试用例)
 
@@ -26,7 +26,7 @@ public:
 阅读代码逻辑和测试用例, 实现`Librarian::borrow`, 使用例`LibrarianSpec.ShouldIncreaseBookCountOnStore`通过
 
 ## Stage 2
-* 编写测试用例`LibrarianSpec, ShouldThrowExceptionWhenNoBookIsAvailable`, 覆盖需求点3
+* 编写测试用例`LibrarianSpec.ShouldThrowExceptionWhenNoBookIsAvailable`, 覆盖需求点3
 * 编译并运行用例, 确保没有编译错误并且用例为失败状态
 * 完善`Librarian::borrow`, 使刚刚编写的测试用例通过
 
@@ -38,5 +38,5 @@ public:
 ## Summary
 * Google Test
 * Test Assertions
-* TDD & BDD
+* TDD
 * Test Fixture
