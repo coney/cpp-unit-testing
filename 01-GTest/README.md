@@ -39,7 +39,7 @@ public:
 * [Google Test Primer](https://code.google.com/p/googletest/wiki/Primer)
 * [Google Test Advanced Guide](https://code.google.com/p/googletest/wiki/AdvancedGuide)
 * [Google Test FAQ](https://code.google.com/p/googletest/wiki/FAQ)
-
+* [测试驱动开发：实战与模式解析](http://product.china-pub.com/3768516)
 
 ## Summary
 * Google Test
