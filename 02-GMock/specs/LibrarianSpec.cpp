@@ -8,9 +8,9 @@ protected:
 
     void prepareBooks()
     {
-        librarian.store("C++ Primer");
-        librarian.store("The C++ Programming Language");
-        librarian.store("Thinking in Java");
+        librarian.store(Book::create("C++ Primer"));
+        librarian.store(Book::create("The C++ Programming Language"));
+        librarian.store(Book::create("Thinking in Java"));
     }
 
     virtual void TearDown() {
@@ -20,8 +20,8 @@ protected:
 };
 
 TEST_F(LibrarianSpec, ShouldIncreaseBookCountOnStore) {
-    ASSERT_EQ(1, librarian.store("The C Programming Language"));
-    ASSERT_EQ(2, librarian.store("Thinking in Java"));
+    ASSERT_EQ(1, librarian.store(Book::create("The C Programming Language")));
+    ASSERT_EQ(2, librarian.store(Book::create("Thinking in Java")));
 }
 
 TEST_F(LibrarianSpec, ShouldReduceBookCountOnBorrow) {

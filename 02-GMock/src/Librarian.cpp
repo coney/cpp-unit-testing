@@ -1,8 +1,8 @@
 #include "Librarian.h"
 
-unsigned int Librarian::store(const std::string &name)
+unsigned int Librarian::store(const std::shared_ptr<Book>& book)
 {
-	books_.insert(name);
+    books_.insert(std::make_pair(book->name(), book));
 	return books_.size();
 }
 

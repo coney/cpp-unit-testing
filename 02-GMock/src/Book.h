@@ -12,7 +12,7 @@ public:
 
     // create Book instance with specified name and price
 	static std::shared_ptr<Book> create(
-        const std::string &name, unsigned int price);
+        const std::string &name, unsigned int price = 0);
 };
 
 #endif
