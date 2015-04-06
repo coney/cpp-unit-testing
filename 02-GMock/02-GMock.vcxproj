@@ -14,6 +14,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mocks\BookVendorMock.h" />
     <ClInclude Include="src\Book.h" />
     <ClInclude Include="src\BookVendor.h" />
     <ClInclude Include="gmock\gmock\gmock.h" />

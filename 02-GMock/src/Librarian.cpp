@@ -8,7 +8,16 @@ unsigned int Librarian::store(const std::shared_ptr<Book>& book)
 
 void Librarian::store(BookVendor &vendor)
 {
-    throw std::runtime_error("not implemented");
+    unsigned int totalPrice = 0;
+    for (size_t i = 0; i < vendor.getBookCount(); i++)
+    {
+        std::shared_ptr<Book> book = vendor.getBookAt(i);
+        if (books_.count(book->name()) == 0) {
+            books_[book->name()] = book;
+            totalPrice += book->price();
+        }
+    }
+    vendor.pay(totalPrice);
 }
 
 unsigned int Librarian::borrow(const std::string &name)

@@ -1,9 +1,13 @@
 #include "gmock/gmock.h"
 #include "../src/Librarian.h"
+#include "../mocks/BookVendorMock.h"
 
 class LibrarianSpec : public testing::Test {
 protected:
     virtual void SetUp() {
+    }
+
+    virtual void TearDown() {
     }
 
     void prepareBooks()
@@ -13,7 +17,18 @@ protected:
         librarian.store(Book::create("Thinking in Java"));
     }
 
-    virtual void TearDown() {
+    std::shared_ptr<BookVendorMock> createBookVendor() {
+        std::shared_ptr<BookVendorMock> vendor = std::make_shared<BookVendorMock>();
+        EXPECT_CALL(*vendor, getBookCount())
+            .WillRepeatedly(testing::Return(3));
+        EXPECT_CALL(*vendor, getBookAt(0))
+            .WillRepeatedly(testing::Return(Book::create("C++ Primer", 10)));
+        EXPECT_CALL(*vendor, getBookAt(1))
+            .WillRepeatedly(testing::Return(Book::create("The C++ Programming Language", 20)));
+        EXPECT_CALL(*vendor, getBookAt(2))
+            .WillRepeatedly(testing::Return(Book::create("Thinking in Java", 30)));
+        EXPECT_CALL(*vendor, pay(testing::_)).Times(testing::AnyNumber());
+        return vendor;
     }
 
     Librarian librarian;
@@ -41,9 +56,23 @@ TEST_F(LibrarianSpec, ShouldThrowExceptionWhenNoBookIsAvailable) {
 TEST_F(LibrarianSpec, ShouldStoreBooksWhichAreNotCurrentlyInLibraryFromVendor) {
     // Librarian will check all books from the vendor
     // and then store those books which are not in the library yet
+
+    std::shared_ptr<BookVendorMock> vendor = createBookVendor();
+    librarian.store(*vendor);
+    ASSERT_EQ(2, librarian.borrow("The C++ Programming Language"));
+    ASSERT_EQ(1, librarian.borrow("C++ Primer"));
+    ASSERT_EQ(0, librarian.borrow("Thinking in Java"));
+
 }
 
 TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
     // After the librarian store the books from the vendor,
     // the librarian needs to pay for the books
+
+    std::shared_ptr<BookVendorMock> vendor = createBookVendor();
+    // Library already has "C++ Primer" in store
+    librarian.store(Book::create("C++ Primer"));
+
+    EXPECT_CALL(*vendor, pay(50)).Times(1);
+    librarian.store(*vendor);
 }
