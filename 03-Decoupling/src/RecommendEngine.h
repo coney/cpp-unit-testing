@@ -1,5 +1,5 @@
-#ifndef __FILTERENGINE_H__
-#define __FILTERENGINE_H__
+#ifndef __RECOMMENDENGINE_H__
+#define __RECOMMENDENGINE_H__
 
 #include "Book.h"
 

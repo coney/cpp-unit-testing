@@ -15,7 +15,7 @@ public:
     std::shared_ptr<Book> recommend(const std::string &keyword);
 
 private:
-    RecommendEngine filter_;
+    RecommendEngine recommendEngine;
 	BookStore books_;
 };
 

@@ -24,7 +24,7 @@
     <ClInclude Include="src\Librarian.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="specs\FilterEngineSpec.cpp" />
+    <ClCompile Include="specs\RecommendEngineSpec.cpp" />
     <ClCompile Include="specs\SearchEngineSpec.cpp" />
     <ClCompile Include="src\RecommendEngine.cpp" />
     <ClCompile Include="src\SearchEngine.cpp" />

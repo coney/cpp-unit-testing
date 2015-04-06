@@ -23,7 +23,7 @@ void Librarian::store(BookVendor &vendor)
 std::shared_ptr<Book> Librarian::recommend(const std::string &keyword)
 {
     BookList booklist = SearchEngine::search(books_, keyword);
-    return filter_.filter(booklist);
+    return recommendEngine.filter(booklist);
 }
 
 unsigned int Librarian::borrow(const std::string &name)

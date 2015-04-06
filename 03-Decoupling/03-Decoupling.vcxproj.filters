@@ -71,10 +71,10 @@
     <ClCompile Include="specs\SearchEngineSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="specs\FilterEngineSpec.cpp">
+    <ClCompile Include="src\RecommendEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RecommendEngine.cpp">
+    <ClCompile Include="specs\RecommendEngineSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
