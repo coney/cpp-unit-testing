@@ -6,12 +6,12 @@
 
 class BookVendorImpl : public BookVendor {
 public:
-	virtual std::shared_ptr<Book> getBook(unsigned int index) const
+	virtual std::shared_ptr<Book> getBookAt(unsigned int index) const
 	{
 		return books_.at(index);
 	}
 
-	virtual unsigned int bookCount() const
+	virtual unsigned int getBookCount() const
 	{
 		return books_.size();
 	}
@@ -19,6 +19,12 @@ public:
 	void addBook(const std::shared_ptr<Book> &book) {
 		books_.push_back(book);
 	}
+
+    virtual void pay(unsigned int price) 
+    {
+        // do nothing but vendor is happy
+    }
+
 private:
 	std::vector<std::shared_ptr<Book>> books_;
 };

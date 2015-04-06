@@ -18,42 +18,42 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gmock\gmock.h">
+    <ClInclude Include="gmock\gmock\gmock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gtest\gtest.h">
+    <ClInclude Include="gmock\gtest\gtest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Librarian.h">
+    <ClInclude Include="src\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BookVendor.h">
+    <ClInclude Include="src\BookVendor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Book.h">
+    <ClInclude Include="src\Librarian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gmock_main.cc">
+    <ClCompile Include="gmock\gmock_main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gmock-gtest-all.cc">
+    <ClCompile Include="gmock\gmock-gtest-all.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Librarian.cpp">
+    <ClCompile Include="specs\BookVendorSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LibrarianSpec.cpp">
+    <ClCompile Include="specs\LibrarianSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Book.cpp">
+    <ClCompile Include="src\Book.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BookVendor.cpp">
+    <ClCompile Include="src\BookVendor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BookVendorSpec.cpp">
+    <ClCompile Include="src\Librarian.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

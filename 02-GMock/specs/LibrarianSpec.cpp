@@ -1,5 +1,5 @@
 #include "gmock/gmock.h"
-#include "Librarian.h"
+#include "../src/Librarian.h"
 
 class LibrarianSpec : public testing::Test {
 protected:
@@ -36,4 +36,14 @@ TEST_F(LibrarianSpec, ShouldThrowExceptionWhenNoBookIsAvailable) {
     ASSERT_THROW({
         librarian.borrow("Learning Python");
     }, std::invalid_argument);
+}
+
+TEST_F(LibrarianSpec, ShouldStoreBooksWhichAreNotCurrentlyInLibraryFromVendor) {
+    // Librarian will check all books from the vendor
+    // and then store those books which are not in the library yet
+}
+
+TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
+    // After the librarian store the books from the vendor,
+    // the librarian needs to pay for the books
 }

@@ -10,7 +10,9 @@ public:
 	virtual const std::string name() const = 0;
 	virtual const unsigned int price() const = 0;
 
-	static std::shared_ptr<Book> create(const std::string &name, unsigned int price);
+    // create Book instance with specified name and price
+	static std::shared_ptr<Book> create(
+        const std::string &name, unsigned int price);
 };
 
 #endif

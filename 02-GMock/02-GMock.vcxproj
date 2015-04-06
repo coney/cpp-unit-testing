@@ -14,20 +14,20 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Book.h" />
-    <ClInclude Include="BookVendor.h" />
-    <ClInclude Include="gmock\gmock.h" />
-    <ClInclude Include="gtest\gtest.h" />
-    <ClInclude Include="Librarian.h" />
+    <ClInclude Include="src\Book.h" />
+    <ClInclude Include="src\BookVendor.h" />
+    <ClInclude Include="gmock\gmock\gmock.h" />
+    <ClInclude Include="gmock\gtest\gtest.h" />
+    <ClInclude Include="src\Librarian.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Book.cpp" />
-    <ClCompile Include="BookVendor.cpp" />
-    <ClCompile Include="BookVendorSpec.cpp" />
-    <ClCompile Include="gmock-gtest-all.cc" />
-    <ClCompile Include="gmock_main.cc" />
-    <ClCompile Include="Librarian.cpp" />
-    <ClCompile Include="LibrarianSpec.cpp" />
+    <ClCompile Include="src\Book.cpp" />
+    <ClCompile Include="src\BookVendor.cpp" />
+    <ClCompile Include="specs\BookVendorSpec.cpp" />
+    <ClCompile Include="gmock\gmock-gtest-all.cc" />
+    <ClCompile Include="gmock\gmock_main.cc" />
+    <ClCompile Include="src\Librarian.cpp" />
+    <ClCompile Include="specs\LibrarianSpec.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2BE2B114-D758-4004-856B-62C6DD4F580C}</ProjectGuid>
@@ -61,7 +61,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)gmock;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
