@@ -19,14 +19,12 @@ protected:
 
     std::shared_ptr<BookVendorMock> createBookVendor() {
         std::shared_ptr<BookVendorMock> vendor = std::make_shared<BookVendorMock>();
-        EXPECT_CALL(*vendor, getBookCount())
-            .WillRepeatedly(testing::Return(3));
-        EXPECT_CALL(*vendor, getBookAt(0))
-            .WillRepeatedly(testing::Return(Book::create("C++ Primer", 10)));
-        EXPECT_CALL(*vendor, getBookAt(1))
-            .WillRepeatedly(testing::Return(Book::create("The C++ Programming Language", 20)));
-        EXPECT_CALL(*vendor, getBookAt(2))
-            .WillRepeatedly(testing::Return(Book::create("Thinking in Java", 30)));
+        BookList books;
+        books.push_back(Book::create("C++ Primer", 10));
+        books.push_back(Book::create("The C++ Programming Language", 20));
+        books.push_back(Book::create("Thinking in Java", 30));
+        EXPECT_CALL(*vendor, getBooks())
+            .WillRepeatedly(testing::Return(books));
         EXPECT_CALL(*vendor, pay(testing::_)).Times(testing::AnyNumber());
         return vendor;
     }
