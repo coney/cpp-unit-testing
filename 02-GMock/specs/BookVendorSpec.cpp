@@ -3,11 +3,13 @@
 
 TEST(BookVendor, ShouldReturnVendorWithRandomBooksToSupply) {
 	std::shared_ptr<BookVendor> vendor = BookVendor::create();
-	ASSERT_GT(vendor->getBookCount(), 0U);
-	for (size_t i = 0; i < vendor->getBookCount(); i++)
-	{
-		std::shared_ptr<Book> book = vendor->getBookAt(i);
-		ASSERT_FALSE(book->name().empty());
-		ASSERT_GT(book->price(), 0U);
-	}
+    BookList books = vendor->getBooks();
+	ASSERT_GT(books.size(), 0U);
+
+    for (BookList::const_iterator it = books.begin();
+        it != books.end(); ++it) {
+        std::shared_ptr<Book> book = *it;
+        ASSERT_FALSE(book->name().empty());
+        ASSERT_GT(book->price(), 0U);
+    }
 }

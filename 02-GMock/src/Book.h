@@ -1,6 +1,7 @@
 #ifndef __BOOK_H__
 #define __BOOK_H__
 
+#include <list>
 #include <string>
 #include <memory>
 
@@ -14,5 +15,7 @@ public:
 	static std::shared_ptr<Book> create(
         const std::string &name, unsigned int price);
 };
+
+typedef std::list<std::shared_ptr<Book>> BookList;
 
 #endif

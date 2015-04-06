@@ -6,8 +6,7 @@
 class BookVendor {
 public:
 	virtual ~BookVendor();
-	virtual std::shared_ptr<Book> getBookAt(unsigned int index) const = 0;
-	virtual unsigned int getBookCount() const = 0;
+    virtual BookList getBooks() const = 0;
     virtual void pay(unsigned int price) = 0;
 
     // generate BookVendor with random books
