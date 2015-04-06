@@ -1,26 +1,22 @@
 # C++ Unit Testing Session
 @(HW)[session,workshop,testing,gtest,gmock]
 
-## 1. UT Kickoff
-### Agenda
-1. 了解Google Test基础使用方法
-2. 使用git下载练习代码, 搭建VS+gtest测试环境
-3. 通过Google Test使用TDD的方法完成练习
-4. 将联系结果push到个人repo中去
+## 0. Workshop Kickoff
 
-### Objective
-* 了解Google Test基础使用方法
-* 熟悉git, visual studio, 方便后续Workshop的练习
+## [1. Introduction to Google Test](./01-GTest)
+### Agenda
+1. 了解Google Test基础使用
+2. 熟悉工具和环境(Visual Studio/Git/Github)
+3. 完成练习题目
+4. 将练习结果push到自己的repo中去
 
 ### Slides
-[01-introduction-to-gtest.pptx](https://github.com/coney/cpp-unit-testing/blob/master/.slides/01-introduction-to-gtest.pptx?raw=true)
+[01-introduction-to-gtest.pptx](./.slides/01-introduction-to-gtest.pptx)
 
-## 2. Stub & Mock
+## 2. Stubs & Mocks
 
 ## 3. 依赖注入及解耦
 
-## 4. 可测试性重构
+## 4. 深入了解gtest/gmock
 
-## 5. gtest/gmock高级用法
-
-## 6. 综合考试，Retro
+## 5. 综合练习，Retro
