@@ -7,7 +7,7 @@ class RecommendEngine
 {
 public:
     virtual ~RecommendEngine();
-    std::shared_ptr<Book> filter(const BookList &bookList) const;
+    virtual std::shared_ptr<Book> filter(const BookList &bookList) const;
 };
 
 #endif
