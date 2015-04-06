@@ -1,11 +1,13 @@
 #include "gmock/gmock.h"
 #include "../src/Librarian.h"
 #include "../mocks/BookVendorMock.h"
+#include "../mocks/RecommendEngineMock.h"
 
 class LibrarianSpec : public testing::Test {
 protected:
     virtual void SetUp() {
-        librarian_ = std::make_shared<Librarian>();
+        recommendEngine_ = std::make_shared<RecommendEngineMock>();
+        librarian_ = std::make_shared<Librarian>(recommendEngine_);
     }
 
     virtual void TearDown() {
@@ -13,6 +15,10 @@ protected:
 
     Librarian &librarian() {
         return *librarian_;
+    }
+
+    RecommendEngineMock &recommendEngine() {
+        return *recommendEngine_;
     }
 
     void prepareBooks()
@@ -36,6 +42,7 @@ protected:
         return vendor;
     }
 
+    std::shared_ptr<RecommendEngineMock> recommendEngine_;
     std::shared_ptr<Librarian> librarian_;
 };
 
@@ -84,7 +91,9 @@ TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
 
 TEST_F(LibrarianSpec, ShouldReturnTheMostPopularBookByKeyword) {
     prepareBooks();
+    EXPECT_CALL(recommendEngine(), filter(testing::_))
+        .WillRepeatedly(testing::Return(Book::create("Hello World")));
     std::shared_ptr<Book> book = librarian().recommend("C++");
     ASSERT_TRUE(book);
-    ASSERT_EQ("The C++ Programming Language", book->name());
+    ASSERT_EQ("Hello World", book->name());
 }
