@@ -3,11 +3,15 @@
 #include "../mocks/BookVendorMock.h"
 #include "../mocks/RecommendEngineMock.h"
 
+using namespace std::placeholders;
+
 class LibrarianSpec : public testing::Test {
 protected:
     virtual void SetUp() {
         recommendEngine_ = std::make_shared<RecommendEngineMock>();
-        librarian_ = std::make_shared<Librarian>(recommendEngine_);
+        librarian_ = std::make_shared<Librarian>(
+            std::bind(&LibrarianSpec::search, this, _1, _2)
+            , recommendEngine_);
     }
 
     virtual void TearDown() {
@@ -20,6 +24,8 @@ protected:
     RecommendEngineMock &recommendEngine() {
         return *recommendEngine_;
     }
+
+    MOCK_METHOD2(search, BookList(const BookStore&, const std::string &));
 
     void prepareBooks()
     {
@@ -90,9 +96,12 @@ TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
 }
 
 TEST_F(LibrarianSpec, ShouldReturnTheMostPopularBookByKeyword) {
-    prepareBooks();
-    EXPECT_CALL(recommendEngine(), filter(testing::_))
-        .WillRepeatedly(testing::Return(Book::create("Hello World")));
+    BookStore emptyStore;
+    BookList bookList;
+    EXPECT_CALL(*this, search(emptyStore, "C++"))
+        .WillOnce(testing::Return(bookList));
+    EXPECT_CALL(recommendEngine(), filter(bookList))
+        .WillOnce(testing::Return(Book::create("Hello World")));
     std::shared_ptr<Book> book = librarian().recommend("C++");
     ASSERT_TRUE(book);
     ASSERT_EQ("Hello World", book->name());

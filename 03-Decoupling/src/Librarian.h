@@ -1,6 +1,7 @@
 #ifndef __LIBRARIAN_H__
 #define __LIBRARIAN_H__
 
+#include <functional>
 #include "Book.h"
 #include "BookVendor.h"
 #include "SearchEngine.h"
@@ -8,8 +9,10 @@
 
 class Librarian {
 public:
-    Librarian(const std::shared_ptr<RecommendEngine> &recommendEngine = std::make_shared<RecommendEngine>())
-        :recommendEngine_(recommendEngine) {
+    typedef std::function<BookList(const BookStore &, const std::string &)> BookSearchFn;
+    Librarian(const BookSearchFn &searchFn = SearchEngine::search, 
+        const std::shared_ptr<RecommendEngine> &recommendEngine = std::make_shared<RecommendEngine>())
+        :recommendEngine_(recommendEngine), searchFn_(searchFn) {
 
     }
 	unsigned int store(const std::shared_ptr<Book>& book);
@@ -19,6 +22,7 @@ public:
     std::shared_ptr<Book> recommend(const std::string &keyword);
 
 private:
+    BookSearchFn searchFn_;
     std::shared_ptr<RecommendEngine> recommendEngine_;
 	BookStore books_;
 };

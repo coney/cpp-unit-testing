@@ -22,7 +22,7 @@ void Librarian::store(BookVendor &vendor)
 
 std::shared_ptr<Book> Librarian::recommend(const std::string &keyword)
 {
-    BookList booklist = SearchEngine::search(books_, keyword);
+    BookList booklist = searchFn_(books_, keyword);
     return recommendEngine_->filter(booklist);
 }
 
