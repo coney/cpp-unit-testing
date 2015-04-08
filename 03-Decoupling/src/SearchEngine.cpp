@@ -4,8 +4,8 @@ SearchEngine::~SearchEngine()
 {
 }
 
-std::list<std::shared_ptr<Book>> SearchEngine::search(
-    const BookStore &bookStore, const std::string &keyword) 
+BookList SearchEngine::search(
+    const BookStore &bookStore, const std::string &keyword)
 {
     BookList bookList;
     for (BookStore::const_iterator it = bookStore.begin();

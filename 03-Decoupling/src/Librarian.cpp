@@ -3,7 +3,7 @@
 unsigned int Librarian::store(const std::shared_ptr<Book>& book)
 {
     books_.insert(std::make_pair(book->name(), book));
-	return books_.size();
+    return books_.size();
 }
 
 void Librarian::store(BookVendor &vendor)
@@ -28,11 +28,11 @@ std::shared_ptr<Book> Librarian::recommend(const std::string &keyword)
 
 unsigned int Librarian::borrow(const std::string &name)
 {
-	BookStore::const_iterator it = books_.find(name);
-	if (it == books_.end()) {
-		throw std::invalid_argument(name + " is not available");
-	}
-	books_.erase(it);
-	return books_.size();
+    BookStore::const_iterator it = books_.find(name);
+    if (it == books_.end()) {
+        throw std::invalid_argument(name + " is not available");
+    }
+    books_.erase(it);
+    return books_.size();
 }
 
