@@ -82,7 +82,7 @@ TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
     librarian().store(*vendor);
 }
 
-TEST_F(LibrarianSpec, ShouldReturnTheMostPopularBookByKeyword) {
+TEST_F(LibrarianSpec, ShouldRecommendTheMostPopularBookByKeyword) {
     prepareBooks();
     std::shared_ptr<Book> book = librarian().recommend("C++");
     ASSERT_TRUE(book);
