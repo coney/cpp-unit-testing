@@ -95,7 +95,7 @@ TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
     librarian().store(*vendor);
 }
 
-TEST_F(LibrarianSpec, ShouldReturnTheMostPopularBookByKeyword) {
+TEST_F(LibrarianSpec, ShouldRecommendTheMostPopularBookByKeyword) {
     BookStore emptyStore;
     BookList bookList;
     EXPECT_CALL(*this, search(emptyStore, "C++"))

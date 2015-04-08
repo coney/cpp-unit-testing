@@ -8,8 +8,7 @@ class SearchEngine
 {
 public:
     virtual ~SearchEngine();
-    static std::list<std::shared_ptr<Book>> search(const BookStore &bookStore, 
-        const std::string &keyword);
+    static BookList search(const BookStore &bookStore, const std::string &keyword);
 };
 
 #endif
