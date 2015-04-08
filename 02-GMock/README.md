@@ -19,13 +19,13 @@ public:
 	virtual const std::string name() const = 0;
 	virtual const unsigned int price() const = 0;
 };
+typedef std::list<std::shared_ptr<Book>> BookList;
 ```
 ``` c++
 class BookVendor {
 public:
-	virtual std::shared_ptr<Book> getBookAt(unsigned int index) const = 0;
-	virtual unsigned int getBookCount() const = 0;
-  virtual void pay(unsigned int price) = 0;
+	virtual BookList getBooks() const = 0;
+	virtual void pay(unsigned int price) = 0;
 };
 ```
 
