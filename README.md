@@ -27,12 +27,18 @@
 ### Agenda
 1. 介绍依赖注入和使用场景
 2. 介绍解耦技巧和重构手法
-3. 静态方法解耦和std::bind
-4. 完成练习题目
+3. 完成练习题目
 
 ### Slides
 [03-dependency-injection-and-decoupling.pptx](./.slides/03-dependency-injection-and-decoupling.pptx)
 
-## 4. 深入了解gtest/gmock
+## [4. Mock技巧](./04-AdvancedMock)
+### Agenda
+1. 介绍Google Mock高级特性
+2. 不知到该讲啥了啊啊啊啊啊啊
+3. 静态方法解耦和std::bind
+
+### Slides
+[好累啊](明天在搞)
 
 ## 5. 综合练习，Retro
