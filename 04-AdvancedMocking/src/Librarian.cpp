@@ -1,5 +1,10 @@
 #include "Librarian.h"
 
+Librarian::Librarian()
+{
+    recommendEngine_ = RecommendEngine::create();
+}
+
 unsigned int Librarian::store(const std::shared_ptr<Book>& book)
 {
     books_.insert(std::make_pair(book->name(), book));
@@ -23,7 +28,7 @@ void Librarian::store(BookVendor &vendor)
 std::shared_ptr<Book> Librarian::recommend(const std::string &keyword)
 {
     BookList booklist = SearchEngine::search(books_, keyword);
-    return recommendEngine.filter(booklist);
+    return recommendEngine_->filter(booklist);
 }
 
 unsigned int Librarian::borrow(const std::string &name)

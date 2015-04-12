@@ -7,8 +7,8 @@ TEST(RecommendEngine, ShouldReturnTheMostPopularBookFromTheBookList) {
     bookList.push_back(Book::create("The C++ Programming Language", 50));
     bookList.push_back(Book::create("Effective C++", 10));
 
-    RecommendEngine engine;
-    std::shared_ptr<Book> book = engine.filter(bookList);
+    std::shared_ptr<RecommendEngine> engine = RecommendEngine::create();
+    std::shared_ptr<Book> book = engine->filter(bookList);
     ASSERT_TRUE(book);
     ASSERT_EQ("The C++ Programming Language", book->name());
 }
