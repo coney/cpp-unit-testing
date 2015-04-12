@@ -64,3 +64,8 @@ std::shared_ptr<RecommendEngine> RecommendEngine::create()
 {
     return std::make_shared<RecommendEngineImpl>();
 }
+
+IRecommendEngine::~IRecommendEngine()
+{
+
+}

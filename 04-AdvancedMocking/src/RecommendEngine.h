@@ -3,11 +3,16 @@
 
 #include "Book.h"
 
-class RecommendEngine
+class IRecommendEngine {
+public:
+    virtual ~IRecommendEngine();
+    virtual std::shared_ptr<Book> filter(const BookList &bookList) const = 0;
+};
+
+class RecommendEngine : public IRecommendEngine
 {
 public:
     virtual ~RecommendEngine();
-    virtual std::shared_ptr<Book> filter(const BookList &bookList) const = 0;
 
     // Engine Control Functions
     virtual const std::string &setEngineParameter(

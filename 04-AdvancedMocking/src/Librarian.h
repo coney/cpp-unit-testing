@@ -8,7 +8,8 @@
 
 class Librarian {
 public:
-    Librarian();
+    Librarian(std::shared_ptr<IRecommendEngine> recommendEngine
+        = RecommendEngine::create());
     unsigned int store(const std::shared_ptr<Book>& book);
     unsigned int borrow(const std::string &name);
     void store(BookVendor &vendor);
@@ -16,7 +17,7 @@ public:
     std::shared_ptr<Book> recommend(const std::string &keyword);
 
 private:
-    std::shared_ptr<RecommendEngine> recommendEngine_;
+    std::shared_ptr<IRecommendEngine> recommendEngine_;
     BookStore books_;
 };
 

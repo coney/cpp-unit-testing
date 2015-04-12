@@ -1,8 +1,8 @@
 #include "Librarian.h"
 
-Librarian::Librarian()
-{
-    recommendEngine_ = RecommendEngine::create();
+Librarian::Librarian(std::shared_ptr<IRecommendEngine> recommendEngine /*= RecommendEngine::create()*/)
+    : recommendEngine_(recommendEngine){
+
 }
 
 unsigned int Librarian::store(const std::shared_ptr<Book>& book)
