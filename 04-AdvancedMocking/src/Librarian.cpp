@@ -1,5 +1,10 @@
 #include "Librarian.h"
 
+Librarian::Librarian()
+{
+    recommendEngine_ = RecommendEngine::create();
+}
+
 unsigned int Librarian::store(const std::shared_ptr<Book>& book)
 {
     books_.insert(std::make_pair(book->name(), book));
