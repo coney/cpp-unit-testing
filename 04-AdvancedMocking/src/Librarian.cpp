@@ -1,7 +1,7 @@
 #include "Librarian.h"
 
-Librarian::Librarian(std::shared_ptr<IRecommendEngine> recommendEngine /*= RecommendEngine::create()*/)
-    : recommendEngine_(recommendEngine){
+Librarian::Librarian(std::shared_ptr<IRecommendEngine> recommendEngine /*= RecommendEngine::create()*/, searchFn searcher/*= SearchEngine::search()*/)
+    : recommendEngine_(recommendEngine), bookSearcher_(searcher){
 
 }
 
@@ -27,7 +27,7 @@ void Librarian::store(BookVendor &vendor)
 
 std::shared_ptr<Book> Librarian::recommend(const std::string &keyword)
 {
-    BookList booklist = SearchEngine::search(books_, keyword);
+    BookList booklist = bookSearcher_(books_, keyword);
     return recommendEngine_->filter(booklist);
 }
 

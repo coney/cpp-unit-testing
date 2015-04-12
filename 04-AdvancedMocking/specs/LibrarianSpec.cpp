@@ -3,12 +3,15 @@
 #include "../mocks/BookVendorMock.h"
 #include "../mocks/RecommendEngineMock.h"
 using namespace testing;
+using namespace std::placeholders;
 
 class LibrarianSpec : public testing::Test {
 protected:
     virtual void SetUp() {
         recommendEngineMock_ = std::make_shared<IRecommendEngineMock>();
-        librarian_ = std::make_shared<Librarian>(recommendEngineMock_);
+
+        librarian_ = std::make_shared<Librarian>(recommendEngineMock_,
+            std::bind(&LibrarianSpec::search, this, _1, _2));
     }
 
     virtual void TearDown() {
@@ -38,6 +41,8 @@ protected:
         EXPECT_CALL(*vendor, pay(testing::_)).Times(testing::AnyNumber());
         return vendor;
     }
+
+    MOCK_CONST_METHOD2(search, BookList(const BookStore&, const std::string &));
 
     std::shared_ptr<IRecommendEngineMock> recommendEngineMock_;
     std::shared_ptr<Librarian> librarian_;
@@ -87,8 +92,10 @@ TEST_F(LibrarianSpec, ShouldPayVendorForTheStoredBooks) {
 }
 
 TEST_F(LibrarianSpec, ShouldRecommendTheMostPopularBookByKeyword) {
-    prepareBooks();
-    EXPECT_CALL(*recommendEngineMock_, filter(_))
+    BookList bookList;
+    EXPECT_CALL(*this, search(_, "C++"))
+        .WillOnce(Return(bookList));
+    EXPECT_CALL(*recommendEngineMock_, filter(bookList))
         .WillOnce(Return(Book::create("C++ Cook Book")));
 
     std::shared_ptr<Book> book = librarian().recommend("C++");
