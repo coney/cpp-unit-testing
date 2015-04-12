@@ -1,6 +1,7 @@
 #ifndef __LIBRARIAN_H__
 #define __LIBRARIAN_H__
 
+#include <functional>
 #include "Book.h"
 #include "BookVendor.h"
 #include "SearchEngine.h"
