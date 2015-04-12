@@ -3,32 +3,37 @@ Stubs & Mocks
 ## Preparation
 * 通过git添加新的remote, 指向此repo: `git remote add source https://github.com/coney/cpp-unit-testing.git`
 * 从此repo上pull最新代码: `git pull source master`, 合入当前主干
-* 打开`03-Decoupling.sln`, 确保现有代码能够正确地被编译和执行
+* 打开`02-GMock.sln`, 确保现有代码能够正确地被编译和执行
 
 ## Problem
-为了更好的服务读者, 图书馆引进了图书查询(SearchEngine)和推荐系统(RecommendEngine):
+图书馆管理员(Librarian)会定期向书商(BookVendor)购买一些书籍来充实图书馆:
 
-1. 管理员会使用查询和推荐系统根据读者提供的关键字推荐一本书
-2. 查询系统会查询并返回所有包含指定关键字的书籍
-3. 推荐系统会选择并返回查询结果中最流行的一本书
+1. 书商能够提供多种图书(附有价格)供管理员进行选择
+2. 管理员仅会挑选当前图书馆中不存在的书籍进行购买
+3. 管理员选好图书后, 会向书商支付所选书籍的总金额
 
-推荐系统(SearchEngine)接口声明:
+书商(BookVendor)和书籍(Book)的声明为:
 ``` c++
-class SearchEngine
-{
+class Book {
 public:
-    static BookList search(
-			const BookStore &bookStore,
-			const std::string &keyword);
+	virtual const std::string name() const = 0;
+	virtual const unsigned int price() const = 0;
+};
+typedef std::list<std::shared_ptr<Book>> BookList;
+```
+``` c++
+class BookVendor {
+public:
+	virtual BookList getBooks() const = 0;
+	virtual void pay(unsigned int price) = 0;
 };
 ```
-推荐系统(RecommendEngine)接口声明:
+
+图书馆管理员需要新增`store`方法, 用于从书商处进书
 ``` c++
-class RecommendEngine
-{
+class Librarian {
 public:
-    virtual std::shared_ptr<Book> filter(
-			const BookList &bookList) const;
+	void store(BookVendor &vendor);
 };
 ```
 
@@ -60,3 +65,4 @@ public:
 * Google Mock
 * Stubs & Mocks
 * std::shared_ptr
+* 
